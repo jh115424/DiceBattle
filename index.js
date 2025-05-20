@@ -6,9 +6,10 @@ const rl = readline.createInterface({
 });
 
 const beginGame = () => {
-  rl.question("Welcome to Dice Battle! Begin the game", () => {
-    console.log("Player one may start!");
-    rollDice();
+  rl.question("Welcome to Dice Battle! Begin the game!", () => {
+    rl.question("Player one may start!", () => {
+      rollDice();
+    });
   });
 };
 beginGame();
@@ -27,10 +28,31 @@ const rollDice = () => {
       const startGame = Math.floor(Math.random() * 6) + 1;
       console.log(`Player 2, You picked dice # ${startGame}!`);
 
+
+
+      
+
       rl.close();
     });
   });
 };
+
+// let battleSoldiers = [0, 1, 2, 3, 4, 5, 6, 7];
+// let startGame;
+
+// const rollDice = () => {
+//   rl.question("Player 1, Roll your dice!", () => {
+//     const startGame = Math.floor(Math.random() * 6) + 1;
+//     console.log(`Player 1, You picked dice # ${startGame}!`);
+
+//     rl.question("Player 2, Roll your dice!", () => {
+//       const startGame = Math.floor(Math.random() * 6) + 1;
+//       console.log(`Player 2, You picked dice # ${startGame}!`);
+
+//       rl.close();
+//     });
+//   });
+// };
 
 /////////////////////////////////////////////////////////////////////////////////////////
 

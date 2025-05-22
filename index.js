@@ -19,6 +19,7 @@ beginGame();
 let battleSoldiers = [0, 1, 2, 3, 4, 5, 6, 7];
 let startGame;
 let startGame2;
+let answer;
 
 const rollDice = () => {
   rl.question("Player 1, Roll your dice!", () => {
@@ -30,10 +31,18 @@ const rollDice = () => {
         const startGame2 = Math.floor(Math.random() * 6) + 1;
         console.log(`Player 2, You picked dice # ${startGame2}!`);
 
-        rl.close();
-
         const showdownPause = () => {
           console.log("Let the battle begin!");
+          compareScores(startGame, startGame2);
+          rl.question("Do you want a rematch?", (answer) => {
+            if (answer === "yes") {
+              console.log("Push enter to start!");
+              beginGame();
+            } else {
+              console.log("Thanks for playing!");
+              rl.close();
+            }
+          });
         };
         setTimeout(showdownPause, 4000);
       });
@@ -43,33 +52,14 @@ const rollDice = () => {
 
 /////////////////////////////////////////////////////////////////////////////////////////
 
-let gameResult = 0;
-
 const compareScores = (startGame, startGame2) => {
-  if (startGame <= startGame2) {
+  if (startGame > startGame2) {
     console.log("Player2 wins!");
-  } else if (startGame >= startGame2) {
-    console.log("Player1 wins");
-  } else if (startGame === startGame2) {
-    console.log("There is a tie! Would you like a rematch?");
+  } else if (startGame < startGame2) {
+    console.log("Player 1 wins");
+  } else {
+    console.log("There is a tie!");
   }
 };
 
-// + → Addition
-// - → Subtraction
-// * → Multiplication
-// / → Division
-// % → Modulus (Remainder)
-// Comparison Operators:
 
-// === → Strict equality (checks value & type)
-// !== → Strict inequality (checks value & type)
-// > → Greater than
-// < → Less than
-// >= → Greater than or equal to
-// <= → Less than or equal to
-// logical Operators:
-
-// && → AND (both conditions must be true)
-// || → OR (at least one condition must be true)
-// ! → NOT (reverses a condition)

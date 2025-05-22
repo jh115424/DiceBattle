@@ -35,27 +35,25 @@ const rollDice = () => {
         const showdownPause = () => {
           console.log("Let the battle begin!");
         };
-        setTimeout(showdownPause, 5000);
+        setTimeout(showdownPause, 4000);
       });
     });
   });
 };
 
-
 /////////////////////////////////////////////////////////////////////////////////////////
-
-let player1 = 0;
-let player2 = 0;
 
 let gameResult = 0;
 
-const compareScores = (rollDice) => {
-    rl.getPrompt("Begin the game", () => {
-        console.log('Player one may start')
-
-    })
-
-}
+const compareScores = (startGame, startGame2) => {
+  if (startGame <= startGame2) {
+    console.log("Player2 wins!");
+  } else if (startGame >= startGame2) {
+    console.log("Player1 wins");
+  } else if (startGame === startGame2) {
+    console.log("There is a tie! Would you like a rematch?");
+  }
+};
 
 // + → Addition
 // - → Subtraction
